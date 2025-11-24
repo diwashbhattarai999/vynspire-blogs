@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
+
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -73,8 +75,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+    <html suppressHydrationWarning lang="en">
+      <body className={`${inter.variable} antialiased`}>
+        <ThemeProvider
+          disableTransitionOnChange
+          enableSystem
+          attribute="class"
+          defaultTheme="light"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
