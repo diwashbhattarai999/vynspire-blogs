@@ -4,3 +4,8 @@ export type LoginResponse = {
   user: User;
   emailVerificationRequired: boolean;
 };
+
+export type RegisterResponse = {
+  user: User;
+  emailVerificationRequired: boolean;
+};
