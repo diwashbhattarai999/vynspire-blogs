@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
 
+import TanstackQueryProvider from "@/components/providers/tanstack-provider";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -83,7 +84,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="light"
         >
-          {children}
+          <TanstackQueryProvider>{children}</TanstackQueryProvider>
         </ThemeProvider>
       </body>
     </html>

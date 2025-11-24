@@ -1,8 +1,31 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
-  },
+  // TailwindCSS config
+  "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css",
+
+  // Format on save
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "i18n-ally.localesPaths": ["src/i18n/messages"]
+
+  // Optional: only format Biome-supported files
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // Run lint on save via the "save actions" extension or tasks
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always", // auto-fix lint errors (Biome)
+    "source.organizeImports": "always" // auto-organize imports (Biome)
+  },
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
