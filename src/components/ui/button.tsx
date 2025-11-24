@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Loader } from "lucide-react";
+import { IconLoader2 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
 
@@ -63,7 +63,7 @@ function Button({
     >
       {isPending ? (
         <>
-          <Loader className="mr-2 h-4 w-4 animate-spin" />
+          <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />
 
           {pendingText}
         </>
