@@ -16,7 +16,7 @@ export const useForgotPassword = () => {
     },
     onSuccess: (data) => {
       setMessage(
-        data?.data?.message ||
+        data?.message ||
           "Password reset link has been sent to your email. Please check your inbox.",
       );
       setErrorMessage(null);

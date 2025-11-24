@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import TanstackQueryProvider from "@/components/providers/tanstack-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
+import { AuthProvider } from "@/contexts/auth-context";
 
-import TanstackQueryProvider from "@/components/providers/tanstack-provider";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -84,7 +85,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="light"
         >
-          <TanstackQueryProvider>{children}</TanstackQueryProvider>
+          <TanstackQueryProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </TanstackQueryProvider>
         </ThemeProvider>
       </body>
     </html>

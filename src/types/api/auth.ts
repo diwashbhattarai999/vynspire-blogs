@@ -10,6 +10,4 @@ export type RegisterResponse = {
   emailVerificationRequired: boolean;
 };
 
-export type ForgotPasswordResponse = {
-  message: string;
-};
+export type ForgotPasswordResponse = null;

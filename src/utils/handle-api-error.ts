@@ -13,7 +13,7 @@ export function handleApiError(
   const message: string =
     isAxiosError(error) && typeof error.response?.data?.message === "string"
       ? error.response.data.message
-      : fallbackMessage;
+      : (error as Error).message || fallbackMessage;
 
   return message;
 }

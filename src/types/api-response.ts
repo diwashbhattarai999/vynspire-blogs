@@ -20,7 +20,7 @@ export type ApiSuccessResponse<T = unknown> = {
   success: true;
   status: number;
   message: string;
-  data: T;
+  data: T | null;
 };
 
 // Union Type for API Response
