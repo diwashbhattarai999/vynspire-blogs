@@ -10,7 +10,7 @@ import { handleApiError } from "@/utils/handle-api-error";
 export const useLogin = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  
+
   const { login } = useAuth();
   const router = useRouter();
 
@@ -32,7 +32,7 @@ export const useLogin = () => {
       // Save user to auth context and localStorage
       if (data?.data?.user) {
         login(data.data.user);
-        router.push(routes.HOME);
+        router.push(routes.DASHBOARD);
       }
     },
     onError: (error: unknown) => {

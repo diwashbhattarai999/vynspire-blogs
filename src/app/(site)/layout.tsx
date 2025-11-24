@@ -1,3 +1,5 @@
+import { AuthRedirect } from "@/components/guards/auth-redirect";
+
 /**
  * The `SiteLayout` component is the layout component for the site
  * @param children - The children components to be rendered
@@ -8,5 +10,9 @@ export default function SiteLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <AuthRedirect>
+      <main>{children}</main>
+    </AuthRedirect>
+  );
 }

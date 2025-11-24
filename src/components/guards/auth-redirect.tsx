@@ -20,7 +20,7 @@ export function AuthRedirect({ children }: AuthRedirectProps) {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      router.push(routes.HOME);
+      router.push(routes.DASHBOARD);
     }
   }, [isAuthenticated, isLoading, router]);
 

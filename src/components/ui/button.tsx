@@ -32,8 +32,15 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
+
+export type ButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+    isPending?: boolean;
+    pendingText?: string;
+  };
 
 function Button({
   className,
@@ -44,12 +51,7 @@ function Button({
   pendingText = "Loading...",
   children,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-    isPending?: boolean;
-    pendingText?: string;
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : "button";
 
   return (

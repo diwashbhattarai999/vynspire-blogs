@@ -31,7 +31,7 @@ export const useRegister = () => {
       // Save user to auth context and localStorage
       if (data?.data?.user) {
         login(data.data.user);
-        router.push(routes.HOME);
+        router.push(routes.DASHBOARD);
       }
     },
     onError: (error: unknown) => {

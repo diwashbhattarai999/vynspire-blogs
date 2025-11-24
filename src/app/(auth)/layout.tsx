@@ -18,7 +18,7 @@ export default function AuthLayout({
         {/* Header */}
         <header className="container mx-auto flex items-center justify-between p-4">
           <GoBack label="Back to Vynspire Blog" />
-          <ThemeToggle />
+          <ThemeToggle toggleVariant="icon" />
         </header>
 
         {/* Main Content */}

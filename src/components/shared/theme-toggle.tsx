@@ -1,23 +1,72 @@
 "use client";
 
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Button, type ButtonProps } from "../ui/button";
 
-export function ThemeToggle() {
+const themeToggleVariants = cva(
+  "w-full justify-start !gap-4 px-2 font-normal outline-none focus:outline-none focus-visible:ring-0 hover:outline-none",
+  {
+    variants: {
+      toggleVariant: {
+        default: "",
+        icon: "w-fit",
+      },
+    },
+    defaultVariants: {
+      toggleVariant: "default",
+    },
+  },
+);
+
+export interface ThemeToggleProps
+  extends ButtonProps,
+    VariantProps<typeof themeToggleVariants> {
+  asChild?: boolean;
+}
+
+export function ThemeToggle({
+  className,
+  toggleVariant,
+  asChild = false,
+  onClick,
+  ...props
+}: ThemeToggleProps) {
+  const Comp = asChild ? Slot : Button;
+
   const { theme, setTheme } = useTheme();
 
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    onClick?.(e);
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
-    <Button
-      className="relative"
-      size="icon"
-      variant="ghost"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    <Comp
+      aria-label="Toggle theme"
+      className={cn(themeToggleVariants({ toggleVariant, className }))}
+      size={props.size || "sm"}
+      variant={props.variant || "ghost"}
+      onClick={handleOnClick}
+      {...props}
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+      {theme === "dark" ? (
+        <>
+          <Sun className="group-hover:text-primary size-4" />
+          {toggleVariant !== "icon" && "Light Mode"}
+        </>
+      ) : (
+        <>
+          <Moon className="group-hover:text-primary size-4" />
+          {toggleVariant !== "icon" && "Dark Mode"}
+        </>
+      )}
+    </Comp>
   );
 }
