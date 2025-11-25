@@ -1,4 +1,6 @@
 import { AuthRedirect } from "@/components/guards/auth-redirect";
+import { Footer } from "@/components/layouts/footer";
+import { SiteNavbar } from "@/components/layouts/header/site-navbar";
 
 /**
  * The `SiteLayout` component is the layout component for the site
@@ -12,7 +14,11 @@ export default function SiteLayout({
 }>) {
   return (
     <AuthRedirect>
-      <main>{children}</main>
+      <div className="flex min-h-screen flex-col">
+        <SiteNavbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </div>
     </AuthRedirect>
   );
 }

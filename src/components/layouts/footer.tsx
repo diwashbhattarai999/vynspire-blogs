@@ -147,7 +147,7 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="bg-background border-border/50 relative border-t pt-20">
-      <div className="max-container">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-5">
           <div className="md:col-span-3">
             <Logo className="block" />
@@ -176,18 +176,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-end justify-between gap-6 border-t py-6">
-          <span className="text-muted-foreground order-last block text-center text-sm md:order-first">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t py-6">
+          <span className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} {siteConfig.company.name}. All rights
             reserved.
           </span>
 
-          <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last">
+          <div className="flex flex-wrap items-center gap-6">
             {SOCIAL_LINKS.map((social) => (
               <Link
                 key={social.name}
                 aria-label={social.name}
-                className="text-muted-foreground hover:text-primary block"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 href={social.href}
                 rel="noopener noreferrer"
                 target="_blank"
