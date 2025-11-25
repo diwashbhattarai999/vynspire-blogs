@@ -1,10 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconPlus, IconEdit } from "@tabler/icons-react";
+import { IconEdit, IconPlus } from "@tabler/icons-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -33,11 +34,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  createCategory,
-  updateCategory,
   type Category,
   type CreateCategoryData,
   type UpdateCategoryData,
+  createCategory,
+  updateCategory,
 } from "@/lib/api/posts";
 
 const categorySchema = z.object({
@@ -46,7 +47,10 @@ const categorySchema = z.object({
     .string()
     .min(1, "Slug is required")
     .max(50, "Slug is too long")
-    .regex(/^[a-z0-9-]+$/, "Slug must be lowercase letters, numbers, and hyphens only"),
+    .regex(
+      /^[a-z0-9-]+$/,
+      "Slug must be lowercase letters, numbers, and hyphens only",
+    ),
   color: z.string().min(1, "Color is required"),
 });
 
@@ -196,7 +200,8 @@ export function CategoryFormDialog({
                   </FormControl>
                   <FormMessage />
                   <p className="text-muted-foreground text-xs">
-                    URL-friendly identifier (lowercase, numbers, and hyphens only)
+                    URL-friendly identifier (lowercase, numbers, and hyphens
+                    only)
                   </p>
                 </FormItem>
               )}
@@ -257,4 +262,3 @@ export function CategoryFormDialog({
     </Dialog>
   );
 }
-

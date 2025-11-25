@@ -814,6 +814,16 @@ export async function deletePost(
   return { success: true };
 }
 
+export interface CreatePostData {
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string;
+  status: "published" | "draft" | "archived";
+  featured: boolean;
+}
+
 export interface UpdatePostData {
   title: string;
   excerpt: string;
@@ -822,6 +832,53 @@ export interface UpdatePostData {
   tags: string;
   status: "published" | "draft" | "archived";
   featured: boolean;
+}
+
+export async function createPost(data: CreatePostData): Promise<Post> {
+  await delay(500);
+  // In a real app, this would make an API call
+  // For mock, we'll create a new post and add it to the array
+  const maxId = Math.max(...mockPosts.map((p) => parseInt(p.id, 10)), 0);
+  const newId = String(maxId + 1);
+
+  const tagsArray = data.tags
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+
+  // Calculate read time (rough estimate: 200 words per minute)
+  const wordCount = data.content.split(/\s+/).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
+  const today = new Date().toISOString().split("T")[0];
+
+  // Get current user from auth context (mock)
+  const newPost: Post = {
+    id: newId,
+    title: data.title,
+    excerpt: data.excerpt,
+    content: data.content,
+    coverImage: "",
+    author: {
+      name: "Current User",
+      avatar: "",
+      email: "user@example.com",
+    },
+    category: data.category,
+    tags: tagsArray,
+    publishedAt: today,
+    updatedAt: today,
+    readTime,
+    views: 0,
+    likes: 0,
+    comments: 0,
+    shares: 0,
+    status: data.status,
+    featured: data.featured,
+  };
+
+  mockPosts.unshift(newPost); // Add to beginning of array
+  return newPost;
 }
 
 export async function updatePost(
