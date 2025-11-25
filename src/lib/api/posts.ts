@@ -562,7 +562,71 @@ export async function getPosts(
 
 export async function getCategories(): Promise<Category[]> {
   await delay(300);
-  return mockCategories;
+  // Filter out "All" category for the categories page
+  return mockCategories.filter((cat) => cat.slug !== "all");
+}
+
+export interface CreateCategoryData {
+  name: string;
+  slug: string;
+  color: string;
+}
+
+export interface UpdateCategoryData {
+  name: string;
+  slug: string;
+  color: string;
+}
+
+export async function createCategory(
+  data: CreateCategoryData,
+): Promise<Category> {
+  await delay(400);
+  // Generate unique ID by finding the maximum existing ID and incrementing
+  const maxId = Math.max(
+    ...mockCategories.map((cat) => parseInt(cat.id, 10)),
+    0,
+  );
+  const newCategory: Category = {
+    id: String(maxId + 1),
+    name: data.name,
+    slug: data.slug,
+    count: 0,
+    color: data.color,
+  };
+  mockCategories.push(newCategory);
+  return newCategory;
+}
+
+export async function updateCategory(
+  id: string,
+  data: UpdateCategoryData,
+): Promise<Category> {
+  await delay(400);
+  const categoryIndex = mockCategories.findIndex((c) => c.id === id);
+  if (categoryIndex === -1) {
+    throw new Error("Category not found");
+  }
+
+  const updatedCategory: Category = {
+    ...mockCategories[categoryIndex],
+    name: data.name,
+    slug: data.slug,
+    color: data.color,
+  };
+
+  mockCategories[categoryIndex] = updatedCategory;
+  return updatedCategory;
+}
+
+export async function deleteCategory(id: string): Promise<{ success: boolean }> {
+  await delay(400);
+  const categoryIndex = mockCategories.findIndex((c) => c.id === id);
+  if (categoryIndex === -1) {
+    throw new Error("Category not found");
+  }
+  mockCategories.splice(categoryIndex, 1);
+  return { success: true };
 }
 
 export async function getPostById(id: string): Promise<Post | null> {
