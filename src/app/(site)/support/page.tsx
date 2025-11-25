@@ -4,19 +4,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   IconArrowRight,
   IconBook,
+  IconBug,
   IconChevronDown,
+  IconCode,
+  IconFileText,
   IconHelp,
   IconMail,
   IconMessage,
   IconPhone,
+  IconQuestionMark,
   IconSearch,
   IconSend,
-  IconUser,
-  IconFileText,
-  IconCode,
   IconSettings,
-  IconBug,
-  IconQuestionMark,
+  IconUser,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -39,9 +39,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
-import { siteConfig } from "@/config/site";
 import { routes } from "@/constants/routes";
 
 const supportFormSchema = z.object({
@@ -272,9 +278,9 @@ export default function SupportPage() {
       .filter(
         (q) =>
           q.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          q.answer.toLowerCase().includes(searchQuery.toLowerCase())
+          q.answer.toLowerCase().includes(searchQuery.toLowerCase()),
       )
-      .map((q) => ({ ...q, category: cat.category }))
+      .map((q) => ({ ...q, category: cat.category })),
   );
 
   return (
@@ -351,7 +357,9 @@ export default function SupportPage() {
       <section className="bg-muted/30 py-16" id="faq">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold">Frequently Asked Questions</h2>
+            <h2 className="mb-4 text-3xl font-bold">
+              Frequently Asked Questions
+            </h2>
             <p className="text-muted-foreground">
               Find answers to the most common questions
             </p>
@@ -408,7 +416,7 @@ export default function SupportPage() {
                         open={openFaq === `${category.category}-${index}`}
                         onOpenChange={(open) =>
                           setOpenFaq(
-                            open ? `${category.category}-${index}` : null
+                            open ? `${category.category}-${index}` : null,
                           )
                         }
                       >
@@ -446,10 +454,7 @@ export default function SupportPage() {
               <IconQuestionMark className="text-muted-foreground mx-auto mb-4 size-12" />
               <p className="text-muted-foreground">
                 No results found for "{searchQuery}". Try different keywords or{" "}
-                <a
-                  href="#contact"
-                  className="text-primary hover:underline"
-                >
+                <a href="#contact" className="text-primary hover:underline">
                   contact support
                 </a>
                 .
@@ -470,7 +475,10 @@ export default function SupportPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {helpArticles.map((article) => (
-              <Card key={article.title} className="group h-full transition-all hover:shadow-lg">
+              <Card
+                key={article.title}
+                className="group h-full transition-all hover:shadow-lg"
+              >
                 <CardContent className="p-6">
                   <div className="mb-4 flex items-center gap-2">
                     <IconFileText className="text-primary size-5" />
@@ -522,17 +530,28 @@ export default function SupportPage() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Category</FormLabel>
-                        <FormControl>
-                          <select
-                            {...field}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          >
-                            <option value="general">General Inquiry</option>
-                            <option value="technical">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="bug">Report a Bug</option>
-                          </select>
-                        </FormControl>
+                        <Select
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Select a category" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="general">
+                              General Inquiry
+                            </SelectItem>
+                            <SelectItem value="technical">
+                              Technical Support
+                            </SelectItem>
+                            <SelectItem value="billing">
+                              Billing Question
+                            </SelectItem>
+                            <SelectItem value="bug">Report a Bug</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -588,7 +607,10 @@ export default function SupportPage() {
                       <FormItem>
                         <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="What can we help you with?" />
+                          <Input
+                            {...field}
+                            placeholder="What can we help you with?"
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -646,7 +668,9 @@ export default function SupportPage() {
             {/* Contact Information */}
             <div className="space-y-6">
               <div>
-                <h2 className="mb-6 text-2xl font-bold">Other Ways to Reach Us</h2>
+                <h2 className="mb-6 text-2xl font-bold">
+                  Other Ways to Reach Us
+                </h2>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
                   Prefer a different method? Choose the option that works best
                   for you.
@@ -665,7 +689,11 @@ export default function SupportPage() {
                         <a
                           href={method.href}
                           className="flex items-start gap-4"
-                          target={method.href.startsWith("http") ? "_blank" : undefined}
+                          target={
+                            method.href.startsWith("http")
+                              ? "_blank"
+                              : undefined
+                          }
                           rel={
                             method.href.startsWith("http")
                               ? "noopener noreferrer"
@@ -676,7 +704,9 @@ export default function SupportPage() {
                             <Icon className="size-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="mb-1 font-semibold">{method.label}</h3>
+                            <h3 className="mb-1 font-semibold">
+                              {method.label}
+                            </h3>
                             <p className="text-muted-foreground mb-1 text-sm">
                               {method.value}
                             </p>
@@ -696,8 +726,9 @@ export default function SupportPage() {
                 <CardContent className="p-6">
                   <h3 className="mb-2 font-semibold">Response Time</h3>
                   <p className="text-muted-foreground text-sm">
-                    Our support team typically responds within 24-48 hours during
-                    business days. For urgent matters, please call us directly.
+                    Our support team typically responds within 24-48 hours
+                    during business days. For urgent matters, please call us
+                    directly.
                   </p>
                 </CardContent>
               </Card>
