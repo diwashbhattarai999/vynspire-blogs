@@ -8,14 +8,21 @@ interface LogoProps {
   href?: string;
   className?: string;
   onClick?: () => void;
+  size?: number;
 }
 
-export function Logo({ asLink = true, href, className, onClick }: LogoProps) {
+export function Logo({
+  asLink = true,
+  href,
+  className,
+  onClick,
+  size = 32,
+}: LogoProps) {
   const Comp = asLink ? Link : "div";
 
   return (
     <Comp className={cn("", className)} href={href || "/"} onClick={onClick}>
-      <Image priority alt="Logo" height={70} src={"/logo.svg"} width={70} />
+      <Image priority alt="Logo" height={size} src={"/logo.svg"} width={size} />
     </Comp>
   );
 }
