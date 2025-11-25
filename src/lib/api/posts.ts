@@ -7,6 +7,7 @@ export interface Post {
   author: {
     name: string;
     avatar: string;
+    email: string;
   };
   category: string;
   tags: string[];
@@ -29,6 +30,19 @@ export interface Category {
   color: string;
 }
 
+export interface PostComment {
+  id: string;
+  postId: string;
+  userName: string;
+  userAvatar: string;
+  userEmail: string;
+  comment: string;
+  createdAt: string;
+  updatedAt?: string;
+  likes: number;
+  replies?: PostComment[];
+}
+
 // Simulate API delay
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -38,11 +52,40 @@ const mockPosts: Post[] = [
     title: "Ingot/DualSense Wireless Controller Review",
     excerpt:
       "A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "John Doe",
       avatar: "",
+      email: "john@example.com",
     },
     category: "Games",
     tags: ["Gaming", "Review", "Hardware"],
@@ -61,11 +104,40 @@ const mockPosts: Post[] = [
     title: "iPadOS 15 Bawa Fitur Baru yang Menarik",
     excerpt:
       "Explore the exciting new features coming to iPadOS 15 that will enhance your productivity and creativity.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Jane Smith",
       avatar: "",
+      email: "jane@example.com",
     },
     category: "Techno",
     tags: ["Apple", "iPad", "Software"],
@@ -84,11 +156,40 @@ const mockPosts: Post[] = [
     title: "Best Practices for React Development",
     excerpt:
       "Learn the essential best practices and patterns for building scalable React applications.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Sarah Johnson",
       avatar: "",
+      email: "diwashb999@gmail.com",
     },
     category: "Development",
     tags: ["React", "JavaScript", "Web Development"],
@@ -107,11 +208,40 @@ const mockPosts: Post[] = [
     title: "Modern UI Design Trends 2024",
     excerpt:
       "Discover the latest UI design trends that are shaping the digital landscape in 2024.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Mike Wilson",
       avatar: "",
+      email: "mike@example.com",
     },
     category: "Design",
     tags: ["Design", "UI/UX", "Trends"],
@@ -130,11 +260,40 @@ const mockPosts: Post[] = [
     title: "Getting Started with Next.js 14",
     excerpt:
       "A beginner-friendly guide to building modern web applications with Next.js 14.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Alex Brown",
       avatar: "",
+      email: "diwashb999@gmail.com",
     },
     category: "Development",
     tags: ["Next.js", "React", "Tutorial"],
@@ -153,11 +312,40 @@ const mockPosts: Post[] = [
     title: "Understanding TypeScript Generics",
     excerpt:
       "Deep dive into TypeScript generics and how to use them effectively in your projects.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Emily Davis",
       avatar: "",
+      email: "emily@example.com",
     },
     category: "Development",
     tags: ["TypeScript", "Programming", "Tutorial"],
@@ -176,11 +364,40 @@ const mockPosts: Post[] = [
     title: "The Future of Web Development",
     excerpt:
       "Exploring emerging technologies and trends that will shape the future of web development.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "David Lee",
       avatar: "",
+      email: "david@example.com",
     },
     category: "Techno",
     tags: ["Web Development", "Future", "Technology"],
@@ -199,11 +416,40 @@ const mockPosts: Post[] = [
     title: "Color Theory in Digital Design",
     excerpt:
       "Master the art of color selection and create visually appealing digital designs.",
-    content: "Full content here...",
+    content: `# Ingot/DualSense Wireless Controller Review
+
+A comprehensive review of the latest gaming controller with advanced haptic feedback and adaptive triggers.
+
+## Introduction
+
+The DualSense Wireless Controller represents a significant leap forward in gaming controller technology. With its innovative haptic feedback system and adaptive triggers, it offers an immersive gaming experience that was previously unimaginable.
+
+## Key Features
+
+### Haptic Feedback
+
+The controller's haptic feedback system provides incredibly detailed vibrations that can simulate various textures and sensations. Whether you're walking on different surfaces or experiencing environmental effects, the haptic feedback adds a new dimension to gameplay.
+
+### Adaptive Triggers
+
+The adaptive triggers offer variable resistance, allowing developers to create unique gameplay mechanics. For example, drawing a bowstring or accelerating a vehicle feels more realistic and engaging.
+
+### Design and Ergonomics
+
+The controller features an ergonomic design that fits comfortably in your hands, even during extended gaming sessions. The button layout is intuitive and responsive.
+
+## Performance
+
+In testing, the controller performed exceptionally well across various game genres. The battery life is impressive, lasting up to 12 hours on a single charge.
+
+## Conclusion
+
+The DualSense Wireless Controller is a must-have for any serious gamer. Its innovative features and excellent build quality make it worth the investment.`,
     coverImage: "",
     author: {
       name: "Lisa Chen",
       avatar: "",
+      email: "lisa@example.com",
     },
     category: "Design",
     tags: ["Design", "Color Theory", "UI/UX"],
@@ -322,4 +568,205 @@ export async function getCategories(): Promise<Category[]> {
 export async function getPostById(id: string): Promise<Post | null> {
   await delay(300);
   return mockPosts.find((post) => post.id === id) || null;
+}
+
+export interface PostComment {
+  id: string;
+  postId: string;
+  userName: string;
+  userAvatar: string;
+  userEmail: string;
+  comment: string;
+  createdAt: string;
+  updatedAt?: string;
+  likes: number;
+  replies?: PostComment[];
+}
+
+const mockComments: Record<string, PostComment[]> = {
+  "1": [
+    {
+      id: "c1",
+      postId: "1",
+      userName: "Alex Thompson",
+      userAvatar: "",
+      userEmail: "diwashb999@gmail.com",
+      comment:
+        "Great review! I've been considering getting this controller. The haptic feedback sounds amazing. How does it compare to the previous generation?",
+      createdAt: "2021-06-08T10:30:00Z",
+      likes: 24,
+    },
+    {
+      id: "c2",
+      postId: "1",
+      userName: "Sarah Chen",
+      userAvatar: "",
+      userEmail: "diwashb999@gmail.com",
+      comment:
+        "I've had this controller for a few months now and I can confirm the adaptive triggers are game-changing. Especially in racing games!",
+      createdAt: "2021-06-08T14:15:00Z",
+      likes: 18,
+      replies: [
+        {
+          id: "c2r1",
+          postId: "1",
+          userName: "John Doe",
+          userAvatar: "",
+          userEmail: "john@example.com",
+          comment:
+            "Totally agree! The resistance when braking feels so realistic.",
+          createdAt: "2021-06-08T15:00:00Z",
+          likes: 5,
+        },
+      ],
+    },
+    {
+      id: "c3",
+      postId: "1",
+      userName: "Mike Rodriguez",
+      userAvatar: "",
+      userEmail: "mike@example.com",
+      comment:
+        "The battery life is impressive. I can game for hours without worrying about charging. Definitely worth the investment!",
+      createdAt: "2021-06-09T09:20:00Z",
+      likes: 12,
+    },
+    {
+      id: "c4",
+      postId: "1",
+      userName: "Emily Watson",
+      userAvatar: "",
+      userEmail: "emily@example.com",
+      comment:
+        "Thanks for the detailed review! I'm particularly interested in how it works with PC games. Have you tested that?",
+      createdAt: "2021-06-09T16:45:00Z",
+      likes: 8,
+    },
+  ],
+  "2": [
+    {
+      id: "c5",
+      postId: "2",
+      userName: "David Kim",
+      userAvatar: "",
+      userEmail: "david@example.com",
+      comment:
+        "The new multitasking features in iPadOS 15 are exactly what I needed for my workflow. Great overview!",
+      createdAt: "2021-06-09T11:00:00Z",
+      likes: 15,
+    },
+    {
+      id: "c6",
+      postId: "2",
+      userName: "Lisa Park",
+      userAvatar: "",
+      userEmail: "lisa@example.com",
+      comment:
+        "I'm excited about the Quick Note feature. It's going to make note-taking so much more convenient.",
+      createdAt: "2021-06-09T13:30:00Z",
+      likes: 9,
+    },
+  ],
+  "3": [
+    {
+      id: "c7",
+      postId: "3",
+      userName: "Chris Anderson",
+      userAvatar: "",
+      userEmail: "chris@example.com",
+      comment:
+        "These React best practices are spot on! I've been implementing them in my projects and the code quality has improved significantly.",
+      createdAt: "2021-06-11T10:00:00Z",
+      likes: 22,
+    },
+    {
+      id: "c8",
+      postId: "3",
+      userName: "Jessica Martinez",
+      userAvatar: "",
+      userEmail: "jessica@example.com",
+      comment:
+        "Could you elaborate more on the state management patterns? I'm still learning React and would love more examples.",
+      createdAt: "2021-06-11T14:20:00Z",
+      likes: 6,
+    },
+  ],
+};
+
+export async function getPostComments(postId: string): Promise<PostComment[]> {
+  await delay(400);
+  return mockComments[postId] || [];
+}
+
+export async function deletePost(
+  postId: string,
+): Promise<{ success: boolean }> {
+  await delay(500);
+  // In a real app, this would make an API call
+  // For mock, we'll just simulate success
+  return { success: true };
+}
+
+export interface UpdatePostData {
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string;
+  status: "published" | "draft" | "archived";
+  featured: boolean;
+}
+
+export async function updatePost(
+  postId: string,
+  data: UpdatePostData,
+): Promise<Post> {
+  await delay(500);
+  // In a real app, this would make an API call
+  // For mock, we'll update the post in the array
+  const postIndex = mockPosts.findIndex((p) => p.id === postId);
+  if (postIndex === -1) {
+    throw new Error("Post not found");
+  }
+
+  const tagsArray = data.tags
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+
+  const updatedPost: Post = {
+    ...mockPosts[postIndex],
+    title: data.title,
+    excerpt: data.excerpt,
+    content: data.content,
+    category: data.category,
+    tags: tagsArray,
+    status: data.status,
+    featured: data.featured,
+    updatedAt: new Date().toISOString().split("T")[0],
+  };
+
+  mockPosts[postIndex] = updatedPost;
+  return updatedPost;
+}
+
+export async function deleteComment(
+  postId: string,
+  commentId: string,
+): Promise<{ success: boolean }> {
+  await delay(400);
+  // In a real app, this would make an API call
+  // For mock, we'll just simulate success
+  if (mockComments[postId]) {
+    const removeComment = (comments: PostComment[]): PostComment[] => {
+      return comments
+        .filter((c) => c.id !== commentId)
+        .map((c) => ({
+          ...c,
+          replies: c.replies ? removeComment(c.replies) : undefined,
+        }));
+    };
+    mockComments[postId] = removeComment(mockComments[postId]);
+  }
+  return { success: true };
 }

@@ -80,7 +80,7 @@ export function NavMain({ items }: { items: Array<NavItem> }) {
                         <Link href={item.url}>
                           {Icon && <Icon className="size-4" />}
                           <span>{item.title}</span>
-                          <ChevronRight className="ml-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                            <IconChevronRight className="ml-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                         </Link>
                       </SidebarMenuButton>
                     )}
