@@ -36,7 +36,7 @@ function formatNumber(num: number): string {
 }
 
 export default function Home() {
-  const { data: featuredPosts, isLoading: featuredLoading } = useQuery({
+  const { data: featuredPosts } = useQuery({
     queryKey: ["posts", { featured: true, status: "published", limit: 1 }],
     queryFn: () => getPosts({ featured: true, status: "published", limit: 1 }),
   });

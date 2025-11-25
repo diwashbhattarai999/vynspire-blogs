@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 
 const menuItems = [
   { name: "Home", href: routes.HOME },
-  { name: "Blog", href: routes.HOME + "#blog" },
-  { name: "Categories", href: routes.HOME + "#categories" },
+  { name: "Blog", href: `${routes.HOME}#blog` },
+  { name: "Categories", href: `${routes.HOME}#categories` },
   { name: "About", href: routes.ABOUT_US },
   { name: "Contact", href: routes.CONTACT },
 ];
@@ -186,4 +186,3 @@ export function SiteNavbar() {
     </>
   );
 }
-

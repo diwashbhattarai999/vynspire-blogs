@@ -8,7 +8,12 @@ interface StatCardProps {
   className?: string;
 }
 
-export function StatCard({ title, value, icon: Icon, className }: StatCardProps) {
+export function StatCard({
+  title,
+  value,
+  icon: Icon,
+  className,
+}: StatCardProps) {
   const formatValue = (val: string | number): string => {
     if (typeof val === "number") {
       if (val >= 1000000) {
@@ -41,4 +46,3 @@ export function StatCard({ title, value, icon: Icon, className }: StatCardProps)
     </div>
   );
 }
-

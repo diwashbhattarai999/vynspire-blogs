@@ -1,5 +1,7 @@
 "use client";
 
+import { IconAlertTriangle } from "@tabler/icons-react";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,7 +12,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { IconAlertTriangle } from "@tabler/icons-react";
 
 interface DeleteConfirmationDialogProps {
   open: boolean;
@@ -67,4 +68,3 @@ export function DeleteConfirmationDialog({
     </AlertDialog>
   );
 }
-

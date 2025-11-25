@@ -332,9 +332,11 @@ export default function PublicPostDetailPage({
                   ),
                   hr: () => <hr className="border-border my-8 border-t" />,
                   img: ({ src, alt }) => (
-                    <img
-                      src={src}
-                      alt={alt}
+                    <Image
+                      width={1200}
+                      height={675}
+                      src={src as string}
+                      alt={alt || "Image"}
                       className="my-4 rounded-lg shadow-lg"
                     />
                   ),
@@ -378,4 +380,3 @@ export default function PublicPostDetailPage({
     </div>
   );
 }
-

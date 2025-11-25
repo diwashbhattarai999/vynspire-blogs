@@ -3,9 +3,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconEdit, IconPlus } from "@tabler/icons-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -36,8 +36,8 @@ import {
 import {
   type Category,
   type CreateCategoryData,
-  type UpdateCategoryData,
   createCategory,
+  type UpdateCategoryData,
   updateCategory,
 } from "@/lib/api/posts";
 

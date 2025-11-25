@@ -1,17 +1,5 @@
 "use client";
 
-import { SiteHeader } from "@/components/layouts/header/site-header";
-import { EditPostDialog } from "@/components/modules/posts/edit-post-dialog";
-import { PostComments } from "@/components/modules/posts/post-comments";
-import { DeleteConfirmationDialog } from "@/components/shared/delete-confirmation-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
-import { routes } from "@/constants/routes";
-import { useAuth } from "@/contexts/auth-context";
-import { deletePost, getPostById } from "@/lib/api/posts";
 import {
   IconArrowLeft,
   IconCalendar,
@@ -31,6 +19,19 @@ import { useRouter } from "next/navigation";
 import { use, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+
+import { SiteHeader } from "@/components/layouts/header/site-header";
+import { EditPostDialog } from "@/components/modules/posts/edit-post-dialog";
+import { PostComments } from "@/components/modules/posts/post-comments";
+import { DeleteConfirmationDialog } from "@/components/shared/delete-confirmation-dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
+import { routes } from "@/constants/routes";
+import { useAuth } from "@/contexts/auth-context";
+import { deletePost, getPostById } from "@/lib/api/posts";
 
 function getInitials(name: string): string {
   return name

@@ -1,9 +1,10 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { getRecentComments, type RecentComment } from "@/lib/api/dashboard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getRecentComments, type RecentComment } from "@/lib/api/dashboard";
 
 function getInitials(name: string): string {
   return name
@@ -48,7 +49,9 @@ export function RecentComments() {
               </Avatar>
               <div className="flex-1 space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-medium text-sm">{comment.userName}</span>
+                  <span className="font-medium text-sm">
+                    {comment.userName}
+                  </span>
                   <span className="text-muted-foreground text-xs">
                     Has Commented
                   </span>
@@ -67,4 +70,3 @@ export function RecentComments() {
     </Card>
   );
 }
-

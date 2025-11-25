@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: Lint
+    name: Lint & Format Check (Biome)
     runs-on: ubuntu-latest
     steps:
       # Checkout repo
@@ -40,8 +40,8 @@ jobs:
       - name: 📥 Install dependencies
         run: pnpm install
 
-      # Lint
-      - name: 🔬 Lint
+      # Lint and format check with Biome
+      - name: 🔬 Lint & Format Check (Biome)
         run: pnpm run lint
 
   type-check:

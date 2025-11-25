@@ -23,7 +23,7 @@ const helpfulLinks = [
     icon: IconFileText,
     title: "Blog",
     description: "Browse our latest articles",
-    href: routes.HOME + "#blog",
+    href: `${routes.HOME}#blog`,
   },
   {
     icon: IconSearch,
@@ -126,4 +126,3 @@ export default function NotFound() {
     </div>
   );
 }
-

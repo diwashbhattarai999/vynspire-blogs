@@ -1,23 +1,24 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import {
-  IconUsers,
+  IconChartBar,
   IconFileText,
   IconHeart,
-  IconChartBar,
+  IconUsers,
 } from "@tabler/icons-react";
+import { useQuery } from "@tanstack/react-query";
+
 import { SiteHeader } from "@/components/layouts/header/site-header";
+import { DeviceChart } from "@/components/modules/dashboard/device-chart";
+import { RecentArticles } from "@/components/modules/dashboard/recent-articles";
+import { RecentComments } from "@/components/modules/dashboard/recent-comments";
+import { SocialMediaShares } from "@/components/modules/dashboard/social-media-shares";
 import { StatCard } from "@/components/modules/dashboard/stat-card";
 import { VisitorsChart } from "@/components/modules/dashboard/visitors-chart";
-import { SocialMediaShares } from "@/components/modules/dashboard/social-media-shares";
-import { RecentComments } from "@/components/modules/dashboard/recent-comments";
-import { RecentArticles } from "@/components/modules/dashboard/recent-articles";
-import { DeviceChart } from "@/components/modules/dashboard/device-chart";
 import { getDashboardStats } from "@/lib/api/dashboard";
 
 export default function DashboardPage() {
-  const { data: stats, isLoading } = useQuery({
+  const { data: stats } = useQuery({
     queryKey: ["dashboard-stats"],
     queryFn: getDashboardStats,
   });

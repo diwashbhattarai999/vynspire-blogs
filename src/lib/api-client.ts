@@ -9,12 +9,12 @@ import axios, {
   type AxiosInstance,
   type AxiosResponse,
   type InternalAxiosRequestConfig,
-} from 'axios';
+} from "axios";
 
-import { env } from '@/env/client';
-import type { ApiResponse } from '@/types/api-response';
+import { env } from "@/env/client";
+import type { ApiResponse } from "@/types/api-response";
 
-import queryClient from './query-client';
+import queryClient from "./query-client";
 
 /**
  * Function to create an Axios instance for a specific API.
@@ -27,8 +27,8 @@ const createApiClient = (baseUrl: string, apiKey?: string): AxiosInstance => {
     baseURL: `${baseUrl}/api/v0`, // Base URL for the API
     timeout: 10000, // 10 seconds timeout
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
     withCredentials: true,
   });
@@ -36,42 +36,46 @@ const createApiClient = (baseUrl: string, apiKey?: string): AxiosInstance => {
   // Request Interceptor
   apiClient.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-      if (apiKey) config.headers.set('x-api-key', apiKey);
+      if (apiKey) config.headers.set("x-api-key", apiKey);
 
       return config;
     },
-    (error: AxiosError) => Promise.reject(error)
+    (error: AxiosError) => Promise.reject(error),
   );
 
   // Response Interceptor
   apiClient.interceptors.response.use(
     (response: AxiosResponse<ApiResponse>) => response,
-    async error => {
+    async (error) => {
       const originalRequest = error.config;
 
       // Handle 401 Unauthorized errors
       if (
         error.response?.status === 401 &&
-        error.response?.data?.error?.code === 'AUTH_TOKEN_NOT_FOUND' &&
+        error.response?.data?.error?.code === "AUTH_TOKEN_NOT_FOUND" &&
         !originalRequest._retry
       ) {
         try {
           // Attempt to refresh the token
-          await apiClient.get('/auth/refresh');
+          await apiClient.get("/auth/refresh");
 
           // Retry the original request
           if (originalRequest)
-            return await apiClient(originalRequest as InternalAxiosRequestConfig);
+            return await apiClient(
+              originalRequest as InternalAxiosRequestConfig,
+            );
         } catch (refreshError) {
-          console.error('Token refresh failed:', refreshError);
+          console.error("Token refresh failed:", refreshError);
 
           // Clear the query cache if token refresh fails
           queryClient.clear();
         }
       }
 
-      return Promise.reject(error instanceof Error ? error : new Error(String(error)));
-    }
+      return Promise.reject(
+        error instanceof Error ? error : new Error(String(error)),
+      );
+    },
   );
 
   return apiClient;

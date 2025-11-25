@@ -1,5 +1,8 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { FormInput } from "@/components/shared/form-input";
 import { FormError, FormSuccess } from "@/components/shared/form-message";
 import { Button } from "@/components/ui/button";
@@ -9,8 +12,6 @@ import {
   type ForgotPasswordFormValues,
   forgotPasswordSchema,
 } from "@/schemas/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 
 export default function ForgotPasswordForm() {
   const form = useForm<ForgotPasswordFormValues>({

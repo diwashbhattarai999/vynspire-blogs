@@ -806,7 +806,7 @@ export async function getPostComments(postId: string): Promise<PostComment[]> {
 }
 
 export async function deletePost(
-  postId: string,
+  _postId: string,
 ): Promise<{ success: boolean }> {
   await delay(500);
   // In a real app, this would make an API call

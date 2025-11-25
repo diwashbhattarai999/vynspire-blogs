@@ -1,16 +1,20 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import {
   IconBrandFacebook,
+  IconBrandTelegram,
   IconBrandTwitter,
   IconBrandWhatsapp,
-  IconBrandTelegram,
   IconUsers,
 } from "@tabler/icons-react";
-import { getTopSocialMediaShares, type SocialMediaShare } from "@/lib/api/dashboard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  getTopSocialMediaShares,
+  type SocialMediaShare,
+} from "@/lib/api/dashboard";
 
 const iconMap: Record<string, typeof IconBrandFacebook> = {
   facebook: IconBrandFacebook,
@@ -77,4 +81,3 @@ export function SocialMediaShares() {
     </Card>
   );
 }
-

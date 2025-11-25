@@ -1,11 +1,12 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getRecentArticles, type RecentArticle } from "@/lib/api/dashboard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { IconFileText } from "@tabler/icons-react";
+import { useQuery } from "@tanstack/react-query";
+
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getRecentArticles, type RecentArticle } from "@/lib/api/dashboard";
 import { cn } from "@/lib/utils";
 
 function formatNumber(num: number): string {
@@ -125,4 +126,3 @@ export function RecentArticles() {
     </Card>
   );
 }
-

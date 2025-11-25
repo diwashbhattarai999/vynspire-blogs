@@ -1,5 +1,6 @@
-import { routes } from "@/constants/routes";
 import Link from "next/link";
+
+import { routes } from "@/constants/routes";
 
 export default function NotFound() {
   return (
@@ -22,4 +23,3 @@ export default function NotFound() {
     </div>
   );
 }
-
