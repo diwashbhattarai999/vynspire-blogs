@@ -30,6 +30,11 @@ export interface Category {
   color: string;
 }
 
+export interface Tag {
+  name: string;
+  count: number;
+}
+
 export interface PostComment {
   id: string;
   postId: string;
@@ -488,6 +493,7 @@ const mockCategories: Category[] = [
 export interface GetPostsParams {
   search?: string;
   category?: string;
+  tag?: string;
   status?: Post["status"];
   featured?: boolean;
   page?: number;
@@ -510,6 +516,7 @@ export async function getPosts(
   const {
     search = "",
     category,
+    tag,
     status = "published",
     featured,
     page = 1,
@@ -539,6 +546,13 @@ export async function getPosts(
     );
   }
 
+  // Filter by tag
+  if (tag) {
+    filteredPosts = filteredPosts.filter((post) =>
+      post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase()),
+    );
+  }
+
   // Filter by featured
   if (featured !== undefined) {
     filteredPosts = filteredPosts.filter((post) => post.featured === featured);
@@ -564,6 +578,33 @@ export async function getCategories(): Promise<Category[]> {
   await delay(300);
   // Filter out "All" category for the categories page
   return mockCategories.filter((cat) => cat.slug !== "all");
+}
+
+export async function getTags(): Promise<Tag[]> {
+  await delay(300);
+  // Extract all tags from published posts and count occurrences
+  const tagCounts = new Map<string, number>();
+
+  mockPosts
+    .filter((post) => post.status === "published")
+    .forEach((post) => {
+      post.tags.forEach((tag) => {
+        const currentCount = tagCounts.get(tag) || 0;
+        tagCounts.set(tag, currentCount + 1);
+      });
+    });
+
+  // Convert to array and sort by count (descending), then by name
+  const tags: Tag[] = Array.from(tagCounts.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => {
+      if (b.count !== a.count) {
+        return b.count - a.count;
+      }
+      return a.name.localeCompare(b.name);
+    });
+
+  return tags;
 }
 
 export interface CreateCategoryData {
@@ -619,7 +660,9 @@ export async function updateCategory(
   return updatedCategory;
 }
 
-export async function deleteCategory(id: string): Promise<{ success: boolean }> {
+export async function deleteCategory(
+  id: string,
+): Promise<{ success: boolean }> {
   await delay(400);
   const categoryIndex = mockCategories.findIndex((c) => c.id === id);
   if (categoryIndex === -1) {
