@@ -11,11 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
-import {
-  deleteCategory,
-  getCategories,
-  type Category,
-} from "@/lib/api/posts";
+import { type Category, deleteCategory, getCategories } from "@/lib/api/posts";
 import { cn } from "@/lib/utils";
 
 export default function CategoriesPage() {
@@ -90,7 +86,8 @@ export default function CategoriesPage() {
               ) : categories.length === 0 ? (
                 <div className="bg-muted rounded-lg border p-12 text-center">
                   <p className="text-muted-foreground text-lg">
-                    No categories found. Create your first category to get started.
+                    No categories found. Create your first category to get
+                    started.
                   </p>
                 </div>
               ) : (
@@ -126,17 +123,23 @@ export default function CategoriesPage() {
                                   category.color,
                                 )}
                               />
-                              <span className="font-medium">{category.name}</span>
+                              <span className="font-medium">
+                                {category.name}
+                              </span>
                             </div>
                           </td>
                           <td className="py-4">
-                            <Badge variant="outline" className="font-mono text-xs">
+                            <Badge
+                              variant="outline"
+                              className="font-mono text-xs"
+                            >
                               {category.slug}
                             </Badge>
                           </td>
                           <td className="py-4">
                             <span className="text-muted-foreground text-sm">
-                              {category.count} {category.count === 1 ? "post" : "posts"}
+                              {category.count}{" "}
+                              {category.count === 1 ? "post" : "posts"}
                             </span>
                           </td>
                           <td className="py-4">
@@ -204,4 +207,3 @@ export default function CategoriesPage() {
     </div>
   );
 }
-

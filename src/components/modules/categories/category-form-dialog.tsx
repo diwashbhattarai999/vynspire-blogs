@@ -118,7 +118,7 @@ export function CategoryFormDialog({
 
   const updateMutation = useMutation({
     mutationFn: (data: UpdateCategoryData) =>
-      updateCategory(category!.id, data),
+      updateCategory(category?.id ?? "", data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["categories"] });
       handleClose();
